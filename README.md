@@ -1,1 +1,4 @@
-<h1 style="text-align: center">Votop</h1>
+<div align="center">
+
+<h1>Votop</h1>
+</div>
