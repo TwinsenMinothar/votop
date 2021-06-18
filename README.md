@@ -1,16 +1,23 @@
-# votop
 
-A new Flutter project.
+<div align='center'>
 
-## Getting Started
+### Universidade Federal de Ouro Preto</br></br></br>
+### **Engenharia de Software II**</br></br>
+### Sistema de *Votação*
+### Grupo: *Votop*
+</div>
+</br></br></br></br></br></br></br>
 
-This project is a starting point for a Flutter application.
+Alunos:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Camillo Rinaldi Barbosa </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gustavo Presoti Sales Brito</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pedro Igor de Souza Malaquias</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rodrigo Juliano da Silva</br>
+Professor:&nbsp;Msc prof. Johnatan Oliveira </br>
+Horário:&nbsp;&nbsp;&nbsp;&nbsp;Seg & Qua - 08:20 -10:00 </br>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<div align="center">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Ouro Preto, 21 de Junho de 2021
+
+</div>
