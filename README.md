@@ -1,10 +1,10 @@
 
 <div align='center'>
 
-## Universidade Federal de Ouro Preto</br></br></br>
-## **Engenharia de Software II**</br></br>
-## Sistema de *Votação*
-## Grupo: *Votop*
+### Universidade Federal de Ouro Preto</br></br></br>
+### **Engenharia de Software II**</br></br>
+### Sistema de *Votação*
+### Grupo: *Votop*
 </div>
 </br></br></br></br></br></br></br>
 
