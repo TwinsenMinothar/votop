@@ -21,3 +21,24 @@ Horário:&nbsp;&nbsp;&nbsp;&nbsp;Seg & Qua - 08:20 -10:00 </br>
 Ouro Preto, 21 de Junho de 2021
 
 </div>
+</br>
+
+# Conteúdo
+
+1. Histórico de Revisões
+2. Processo e Software
+3. Cronograma
+4. Levantamento de Requisitos
+5. Especificação de Requisitos
+    * Requisitos Funcionais
+    * Requisitos não fucionais
+6. Plano VVT
+    * Requisitos a serem testados
+    * Estratégia e ferramentas de teste
+    * Equipe e infra-estrutura
+    * Exeecução do Plano de Teste 
+7. Mediação e Qualidade de Software
+8. Observações
+9. Referências
+
+------------------------
