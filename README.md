@@ -57,7 +57,7 @@ Professor:&nbsp;Msc prof. Johnatan Oliveira </br>
    |Todos            |Definição do modelo de processo de software,detalhes para implementação</br>(linguagem,plataforma e responsáveis) e cronograma|14/06 a 20/06|
    |                 |Especificação de requisitos (casos de uso e descrição dos cenários)|21/06 a 27/06|
    |                 |Justificativa da escolha do processo de software|14/06 a 11/07|
-   |                 |Levantamento dos Requisitos do software|12/07 a 18/07|
-   |                 |Plano de verificação, validação e testes|19/07 a 25/07|
-   |                 |Implementação das classes e métodos|26/06 a 28/07|
+   |Camillo          |Levantamento dos Requisitos do software|12/07 a 18/07|
+   |Todos            |Plano de verificação, validação e testes|19/07 a 25/07|
+   |Todos            |Implementação das classes e métodos|26/06 a 28/07|
    |                 |Aplicação de técnicas e uso de ferramentas para medição de qualidade de software|26/07 a 01/08|
