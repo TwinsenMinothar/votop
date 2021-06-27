@@ -103,5 +103,5 @@ Professor:&nbsp;Msc prof. Johnatan Oliveira </br>
 
 ### Diagrama de casos de uso
 
-![Diagrama de contexto](assets\images\readme\img1.jpeg)
-![Diagrama de hierarquia dos atores](assets\images\readme\img2.jpeg)
+![Diagrama de contexto](/assets/images/readme/img1.jpeg)
+![Diagrama de hierarquia dos atores](/assets/images/readme/img2.jpeg)
