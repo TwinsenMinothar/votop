@@ -99,3 +99,9 @@ Professor:&nbsp;Msc prof. Johnatan Oliveira </br>
 |Pré-Condições| Estar no menu de Administrador |
 |Fluxo Pricipal| 
 |Pós-Condições| Eleição Cadastrada |
+
+
+### Diagrama de casos de uso
+
+![Diagrama de contexto](assets\images\readme\img1.jpeg)
+![Diagrama de hierarquia dos atores](assets\images\readme\img2.jpeg)
