@@ -61,3 +61,41 @@ Professor:&nbsp;Msc prof. Johnatan Oliveira </br>
    |Todos            |Plano de verificação, validação e testes|19/07 a 25/07|
    |Todos            |Implementação das classes e métodos|26/06 a 28/07|
    |                 |Aplicação de técnicas e uso de ferramentas para medição de qualidade de software|26/07 a 01/08|
+
+## Leventamento de Requisitos
+
+|Criar eleição |                                                |
+|:-------------:|-------------------------------------------------|
+|Objetivo| Permitir que o administrador crie uma nova eleição    |
+|Requisitos| Estar na funcionalidade de Administrator|
+|Atores| Administrador |
+|Pré-Condições| Estar no menu de Administrador |
+|Fluxo Pricipal| 
+|Pós-Condições| Eleição Cadastrada |
+
+|Apurar Votação|                                                |
+|:-------------:|-------------------------------------------------|
+|Objetivo| Permitir que o administrador crie uma nova eleição    |
+|Requisitos| Estar na funcionalidade de Administrator|
+|Atores| Administrador |
+|Pré-Condições| Estar no menu de Administrador |
+|Fluxo Pricipal| 
+|Pós-Condições| Eleição Cadastrada |
+
+|Criar Item de Votação |                                                |
+|:-------------:|-------------------------------------------------|
+|Objetivo| Permitir que o administrador crie uma nova eleição    |
+|Requisitos| Estar na funcionalidade de Administrator|
+|Atores| Administrador |
+|Pré-Condições| Estar no menu de Administrador |
+|Fluxo Pricipal| 
+|Pós-Condições| Item Cadastrado |
+
+|Iniciar votação |                                                |
+|:-------------:|-------------------------------------------------|
+|Objetivo| Permitir que o administrador crie uma nova eleição    |
+|Requisitos| Estar na funcionalidade de Administrator|
+|Atores| Administrador |
+|Pré-Condições| Estar no menu de Administrador |
+|Fluxo Pricipal| 
+|Pós-Condições| Eleição Cadastrada |
