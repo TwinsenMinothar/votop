@@ -102,6 +102,12 @@ Professor:&nbsp;Msc prof. Johnatan Oliveira </br>
 
 
 ### Diagrama de casos de uso
+<div align='center'>
+    
+<img src="/assets/images/readme/img2.jpeg" alt="diagrama-de-hierarquia-dos-atores" height="300px"/>
+    <p>Figura 1: Diagrama de contexto </p>
+            </br>
+<img src="/assets/images/readme/img1.jpeg" alt="diagrama-de-contexto" height="300px"/>
+    <p>Figura 2: Diagrama de hierarquia dos atores</p>
 
-![Diagrama de contexto](/assets/images/readme/img1.jpeg)
-![Diagrama de hierarquia dos atores](/assets/images/readme/img2.jpeg)
+ </div>
