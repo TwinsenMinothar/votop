@@ -35,7 +35,9 @@ class IdentificationUser extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     icon: Icon(Icons.arrow_back),
                   ),
                 ),

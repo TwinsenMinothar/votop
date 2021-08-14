@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './ui.dart';
+
 class NewVote extends StatelessWidget {
 
   TextEditingController descriptionController = TextEditingController();
@@ -38,7 +40,9 @@ class NewVote extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VoteOption()));
+                    },
                     child: Text('Continue'),
                   ),
                 ),

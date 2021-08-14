@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './ui.dart';
+
 class PollSetting extends StatefulWidget {
   const PollSetting({Key? key}) : super(key: key);
 
@@ -58,14 +60,19 @@ class _PollSettingState extends State<PollSetting> {
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       icon: Icon(Icons.arrow_back),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => IdentificationUser()));
+                      },
                       child: Text('Continue'),
                     ),
                   ),

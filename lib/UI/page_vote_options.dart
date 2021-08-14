@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './ui.dart';
+
 class VoteOption extends StatelessWidget {
   List<Widget> optionsList = [];
 
@@ -30,14 +32,19 @@ class VoteOption extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     icon: Icon(Icons.arrow_back),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PollSetting()));
+                    },
                     child: Text('Continue'),
                   ),
                 ),
