@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "77117992443",
+    "project_id": "votop-tp",
+    "storage_bucket": "votop-tp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77117992443:android:acadb08c93a4e34347ef5e",
+        "android_client_info": {
+          "package_name": "com.example.votop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77117992443-mj6brdn5hqhgarmbjnm4lu9phrcmmvo5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9xaSzba_OskjeVEXb0aQ5YWptteGNfrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77117992443-mj6brdn5hqhgarmbjnm4lu9phrcmmvo5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
