@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './ui.dart';
+
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
 
@@ -72,6 +74,24 @@ class _WelcomePageState extends State<WelcomePage> {
                     ),
                     obscureText: obscureText,
                   ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Esqueci a senha',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF4DB4FE),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: 16,
                   ),
@@ -84,15 +104,21 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => SignUp()));
+                      },
                       child: Text('Sing Up'),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => NewVote()));
+                      },
                       child: Text('New poll without Login'),
                     ),
                   ),
