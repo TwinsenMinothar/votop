@@ -8,7 +8,7 @@ class PollSetting extends StatefulWidget {
 }
 
 class _PollSettingState extends State<PollSetting> {
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

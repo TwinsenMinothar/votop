@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: PollSetting(),
+      home: IdentificationUser(),
       debugShowCheckedModeBanner: false,
     );
   }
