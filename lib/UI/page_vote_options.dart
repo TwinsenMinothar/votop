@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NewVote extends StatelessWidget {
-
-  TextEditingController descriptionController = TextEditingController();
+class VoteOption extends StatelessWidget {
+  List<Widget> optionsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -16,29 +15,29 @@ class NewVote extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Qual é a ocasião?',
+              'Quais são as opções?',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Titulo', icon: Icon(Icons.subject)),
-            ),
-            TextFormField(
-              controller: descriptionController,
-              decoration: InputDecoration(
-                  labelText: 'Descrição', icon: Icon(Icons.description)),
-            ),
-
+            Option(),
+            Option(),
+            Option(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.arrow_back),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
                   child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: () {},
                     child: Text('Continue'),
                   ),
                 ),
@@ -46,6 +45,19 @@ class NewVote extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Option extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(
+        labelText: 'Option',
+        icon: Icon(Icons.add),
+        hintText: 'Add option',
       ),
     );
   }
