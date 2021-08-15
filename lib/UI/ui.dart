@@ -4,3 +4,5 @@ export './page_poll_setting.dart';
 export './page_identification.dart';
 export './page_welcome.dart';
 export './page_signup.dart';
+export './page_admin_panel.dart';
+export './page_voter_panel.dart';
