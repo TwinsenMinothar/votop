@@ -59,11 +59,11 @@ class _PollSettingState extends State<PollSetting> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 16.0),
-                    child: IconButton(
+                    child: TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      icon: Icon(Icons.arrow_back),
+                      child: Text('Back'),
                     ),
                   ),
                   Padding(

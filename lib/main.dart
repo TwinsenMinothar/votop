@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:votop/UI/ui.dart';
+import './UI/ui.dart';
 
 void main() {
   runApp(MyApp());

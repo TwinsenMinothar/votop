@@ -33,12 +33,12 @@ class IdentificationUser extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: IconButton(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: Icon(Icons.arrow_back),
+                    child: Text('Back'),
                   ),
                 ),
                 Padding(

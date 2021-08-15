@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import './ui.dart';
 
 class VoteOption extends StatelessWidget {
-  List<Widget> optionsList = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +10,7 @@ class VoteOption extends StatelessWidget {
         title: Text('Vo<T>op'),
         centerTitle: true,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -23,19 +21,25 @@ class VoteOption extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Option(),
-            Option(),
-            Option(),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: EdgeInsets.all(16.0),
+              itemBuilder: (BuildContext context, int index) {
+                return options[index];
+              },
+              itemCount: options.length,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child: IconButton(
+                  child: TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: Icon(Icons.arrow_back),
+                    child: Text('Back'),
                   ),
                 ),
                 Padding(
@@ -49,9 +53,15 @@ class VoteOption extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          options.add(Option());
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -69,3 +79,8 @@ class Option extends StatelessWidget {
     );
   }
 }
+
+List<Option> options = [
+  Option(),
+  Option(),
+];
