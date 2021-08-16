@@ -21,6 +21,21 @@ class VoteOption extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      options.add(Option());
+                    },
+                    child: Text('Adicionar opção'),
+                  ),
+                ],
+              ),
+            ),
+            Divider(),
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -56,12 +71,6 @@ class VoteOption extends StatelessWidget {
             )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          options.add(Option());
-        },
-        child: Icon(Icons.add),
       ),
     );
   }

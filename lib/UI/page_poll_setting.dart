@@ -2,6 +2,32 @@ import 'package:flutter/material.dart';
 
 import './ui.dart';
 
+List<OptionSetting> settingOptions = [
+  OptionSetting(
+    iconData: Icons.check,
+    title: 'Yes, no, if need be',
+    description:
+        'Participants can indicate if an option is not ideal for them.',
+  ),
+  OptionSetting(
+    iconData: Icons.group,
+    title: 'Limit the number of votes per option',
+    description:
+        'First come, first served. Once the spots are filled, the option is no longer available.',
+  ),
+  OptionSetting(
+    iconData: Icons.looks_one,
+    title: 'Limit participants to a single vote',
+    description: 'Participants can only select one option.',
+  ),
+  OptionSetting(
+    iconData: Icons.visibility_off,
+    title: 'Hidden poll',
+    description:
+        'Participants’ names, comments and votes are confidential. Only you can see the results.',
+  ),
+];
+
 class PollSetting extends StatefulWidget {
   const PollSetting({Key? key}) : super(key: key);
 
@@ -10,7 +36,6 @@ class PollSetting extends StatefulWidget {
 }
 
 class _PollSettingState extends State<PollSetting> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,36 +48,13 @@ class _PollSettingState extends State<PollSetting> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              CardOption(
-                OptionSetting(
-                  iconData: Icons.check,
-                  title: 'Yes, no, if need be',
-                  description:
-                      'Participants can indicate if an option is not ideal for them.',
-                ),
-              ),
-              CardOption(
-                OptionSetting(
-                  iconData: Icons.group,
-                  title: 'Limit the number of votes per option',
-                  description:
-                      'First come, first served. Once the spots are filled, the option is no longer available.',
-                ),
-              ),
-              CardOption(
-                OptionSetting(
-                  iconData: Icons.looks_one,
-                  title: 'Limit participants to a single vote',
-                  description: 'Participants can only select one option.',
-                ),
-              ),
-              CardOption(
-                OptionSetting(
-                  iconData: Icons.visibility_off,
-                  title: 'Hidden poll',
-                  description:
-                      'Participants’ names, comments and votes are confidential. Only you can see the results.',
-                ),
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) {
+                  return CardOption(settingOptions[index]);
+                },
+                itemCount: settingOptions.length,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -116,18 +118,22 @@ class _CardOptionState extends State<CardOption> {
       child: CheckboxListTile(
         value: widget.optionSetting.selected != false,
         onChanged: (bool? value) {
-          setState(() {
-            if (widget.optionSetting.selected == false) {
-              widget.optionSetting.selected = true;
-            } else {
-              widget.optionSetting.selected = false;
-            }
-          });
+          changeState();
         },
         title: Text(widget.optionSetting.title),
         subtitle: Text(widget.optionSetting.description),
         secondary: Icon(widget.optionSetting.iconData),
       ),
     );
+  }
+
+  void changeState() {
+    return setState(() {
+      if (widget.optionSetting.selected == false) {
+        widget.optionSetting.selected = true;
+      } else {
+        widget.optionSetting.selected = false;
+      }
+    });
   }
 }

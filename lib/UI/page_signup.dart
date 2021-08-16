@@ -77,19 +77,30 @@ class _SignUpState extends State<SignUp> {
                         ),
                         obscureText: obscureText,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(32.0),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              await model.signUp({
-                                'email': _emailController.text,
-                                'password': _passwordController.text
-                              });
-                            }
-                          },
-                          child: Text('Cadastrar'),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('Back'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(32.0),
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                if (_formKey.currentState!.validate()) {
+                                  await model.signUp({
+                                    'email': _emailController.text,
+                                    'password': _passwordController.text
+                                  });
+                                }
+                              },
+                              child: Text('Cadastrar'),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

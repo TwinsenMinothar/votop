@@ -34,28 +34,25 @@ class NewVote extends StatelessWidget {
                   labelText: 'Descrição', icon: Icon(Icons.description)),
             ),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                     child: Text('Back'),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: ElevatedButton(
+                  ElevatedButton(
                     onPressed: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VoteOption()));
                     },
                     child: Text('Continue'),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
