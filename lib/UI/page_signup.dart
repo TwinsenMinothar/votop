@@ -22,7 +22,6 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
         body: ScopedModelDescendant<UserModel>(
           builder: (context, child, model) {
             if (model.isLoading)

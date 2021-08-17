@@ -10,6 +10,7 @@ class IdentificationUser extends StatelessWidget {
       appBar: AppBar(
         title: Text('Vo<T>op'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

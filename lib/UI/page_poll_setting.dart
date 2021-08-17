@@ -44,6 +44,7 @@ class _PollSettingState extends State<PollSetting> {
       appBar: AppBar(
         title: Text('Vo<T>op'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Padding(

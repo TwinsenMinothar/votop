@@ -10,6 +10,7 @@ class VoteOption extends StatelessWidget {
       appBar: AppBar(
         title: Text('Vo<T>op'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
