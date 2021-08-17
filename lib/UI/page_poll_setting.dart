@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './ui.dart';
+import 'components/components.dart';
 
 List<OptionSetting> settingOptions = [
   OptionSetting(
@@ -56,29 +57,21 @@ class _PollSettingState extends State<PollSetting> {
                 },
                 itemCount: settingOptions.length,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text('Back'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: ElevatedButton(
+              Padding(
+                padding: EdgeInsets.only(top: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ButtonBack(),
+                    ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => IdentificationUser()));
                       },
                       child: Text('Continue'),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './ui.dart';
+import 'components/components.dart';
 
 class NewVote extends StatelessWidget {
 
@@ -39,12 +40,7 @@ class NewVote extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('Back'),
-                  ),
+                  ButtonBack(),
                   ElevatedButton(
                     onPressed: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VoteOption()));

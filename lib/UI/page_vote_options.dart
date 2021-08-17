@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './ui.dart';
+import 'components/components.dart';
 
 class VoteOption extends StatelessWidget {
   @override
@@ -41,31 +42,20 @@ class VoteOption extends StatelessWidget {
               shrinkWrap: true,
               padding: EdgeInsets.all(16.0),
               itemBuilder: (BuildContext context, int index) {
-                return options[index];
+                  return options[index];
               },
               itemCount: options.length,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('Back'),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => PollSetting()));
-                    },
-                    child: Text('Continue'),
-                  ),
+                ButtonBack(),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => PollSetting()));
+                  },
+                  child: Text('Continue'),
                 ),
               ],
             )
@@ -75,21 +65,3 @@ class VoteOption extends StatelessWidget {
     );
   }
 }
-
-class Option extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: 'Option',
-        icon: Icon(Icons.add),
-        hintText: 'Add option',
-      ),
-    );
-  }
-}
-
-List<Option> options = [
-  Option(),
-  Option(),
-];

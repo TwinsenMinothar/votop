@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'components/components.dart';
+
 class IdentificationUser extends StatelessWidget {
 
   @override
@@ -29,26 +31,18 @@ class IdentificationUser extends StatelessWidget {
                   labelText: 'Email', icon: Icon(Icons.email)),
             ),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('Back'),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: ElevatedButton(
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ButtonBack(),
+                  ElevatedButton(
                     onPressed: (){},
                     child: Text('Finish'),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

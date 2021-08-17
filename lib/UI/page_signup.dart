@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../models/user_model.dart';
+import 'components/components.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -80,12 +81,7 @@ class _SignUpState extends State<SignUp> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('Back'),
-                          ),
+                          ButtonBack(),
                           Padding(
                             padding: const EdgeInsets.all(32.0),
                             child: ElevatedButton(
@@ -109,3 +105,4 @@ class _SignUpState extends State<SignUp> {
         ));
   }
 }
+
