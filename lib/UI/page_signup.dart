@@ -1,3 +1,5 @@
+import 'package:Votop/ui/page_new_vote.dart';
+import 'package:firedart/auth/exceptions.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../models/user_model.dart';
@@ -87,10 +89,18 @@ class _SignUpState extends State<SignUp> {
                             child: ElevatedButton(
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  await model.signUp({
-                                    'email': _emailController.text,
-                                    'password': _passwordController.text
-                                  });
+                                  try {
+                                    await model.doAuth({
+                                      "email": _emailController.text,
+                                      "password": _passwordController.text,
+                                      'signUp': true,
+                                    });
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) => NewVote()));
+                                  } on AuthException catch (e) {
+                                    print(e);
+                                  }
                                 }
                               },
                               child: Text('Cadastrar'),
