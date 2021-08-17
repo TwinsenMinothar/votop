@@ -24,16 +24,21 @@ class UserModel extends Model {
     _loadCurrentUser();
   }
 
-  login() {}
-
-  signUp(Map<String, dynamic> userData) async {
+  doAuth(Map<String, dynamic> credentials) async {
     isLoading = true;
     notifyListeners();
-    log(userData.toString());
+    print(credentials.toString());
     try {
-      user = await auth.signUp(userData['email'], userData['password']);
+      if (credentials['signUp'])
+        user = await auth.signUp(credentials['email'], credentials['password']);
+      else {
+        user = await auth.signIn(credentials['email'], credentials['password']);
+      }
+      print('logged in');
     } on AuthException catch (e) {
-      print('auth error: $e');
+      isLoading = false;
+      notifyListeners();
+      throw e;
     }
     isLoading = false;
     notifyListeners();
