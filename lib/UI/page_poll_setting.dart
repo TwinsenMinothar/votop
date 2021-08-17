@@ -64,13 +64,7 @@ class _PollSettingState extends State<PollSetting> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ButtonBack(),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => IdentificationUser()));
-                      },
-                      child: Text('Continue'),
-                    ),
+                    ButtonContinue(nextPage: () => IdentificationUser()),
                   ],
                 ),
               ),

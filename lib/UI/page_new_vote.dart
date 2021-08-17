@@ -4,7 +4,6 @@ import './ui.dart';
 import 'components/components.dart';
 
 class NewVote extends StatelessWidget {
-
   TextEditingController descriptionController = TextEditingController();
 
   @override
@@ -34,19 +33,13 @@ class NewVote extends StatelessWidget {
               decoration: InputDecoration(
                   labelText: 'Descrição', icon: Icon(Icons.description)),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ButtonBack(),
-                  ElevatedButton(
-                    onPressed: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>VoteOption()));
-                    },
-                    child: Text('Continue'),
-                  ),
+                  ButtonContinue(nextPage: () => VoteOption()),
                 ],
               ),
             ),

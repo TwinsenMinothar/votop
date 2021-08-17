@@ -50,13 +50,7 @@ class VoteOption extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ButtonBack(),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => PollSetting()));
-                  },
-                  child: Text('Continue'),
-                ),
+                ButtonContinue(nextPage: () => PollSetting()),
               ],
             )
           ],

@@ -37,10 +37,7 @@ class IdentificationUser extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ButtonBack(),
-                  ElevatedButton(
-                    onPressed: (){},
-                    child: Text('Finish'),
-                  ),
+                  ButtonContinue(nextPage: ()=> null),
                 ],
               ),
             ),
