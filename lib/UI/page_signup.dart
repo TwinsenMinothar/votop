@@ -35,6 +35,13 @@ class _SignUpState extends State<SignUp> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Text(
+                        'Register',
+                        style: TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       TextFormField(
                         decoration: InputDecoration(
                           labelText: 'Full Name',
