@@ -24,15 +24,15 @@ class UserModel extends Model {
     _loadCurrentUser();
   }
 
-  doAuth(Map<String, dynamic> credentials) async {
+  doAuth(Map<String, dynamic> userData) async {
     isLoading = true;
     notifyListeners();
-    print(credentials.toString());
+    print(userData.toString());
     try {
-      if (credentials['signUp'])
-        user = await auth.signUp(credentials['email'], credentials['password']);
+      if (userData['signUp'])
+        user = await auth.signUp(userData['email'], userData['password']);
       else {
-        user = await auth.signIn(credentials['email'], credentials['password']);
+        user = await auth.signIn(userData['email'], userData['password']);
       }
       print('logged in');
     } on AuthException catch (e) {
@@ -42,6 +42,43 @@ class UserModel extends Model {
     }
     isLoading = false;
     notifyListeners();
+  }
+
+  Future<void> signUp({required Map<String, dynamic> userData, required String pass}) async {
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      user = await auth.signUp(
+        userData['email'],
+        pass,
+      ).then((authResult) async {
+        user = authResult;
+
+        await _saveUserData(userData);
+
+        isLoading = false;
+        notifyListeners();
+      });
+    } on AuthException catch (e) {
+      isLoading = false;
+      notifyListeners();
+      throw e;
+    }
+
+    isLoading = false;
+    notifyListeners();
+  }
+
+  void recoveryPassword(String email) {
+    auth.resetPassword(email);
+  }
+
+  Future<Null> _saveUserData(Map<String, dynamic> userData) async {
+    this.userData = userData;
+
+    await Firestore.instance.collection('users').document(user!.id)
+        .set(userData);
   }
 
   Future<Null> _loadCurrentUser() async {

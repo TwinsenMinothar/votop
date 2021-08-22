@@ -1,3 +1,4 @@
+import 'package:Votop/UI/page_password_recovery.dart';
 import 'package:Votop/models/user_model.dart';
 import 'package:firedart/auth/exceptions.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +103,11 @@ class _WelcomePageState extends State<WelcomePage> {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 8),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => PasswordRecoveryPage()
+                            ));
+                          },
                           child: Text(
                             'Esqueci a senha',
                             textAlign: TextAlign.right,
