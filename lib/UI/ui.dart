@@ -6,3 +6,4 @@ export './page_welcome.dart';
 export './page_signup.dart';
 export './page_admin_panel.dart';
 export './page_voter_panel.dart';
+export './page_edit_profile.dart';
