@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+
+import './components/components.dart';
 import '../UI/ui.dart';
 
 class AdminPanel extends StatelessWidget {
-  const AdminPanel({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final _primaryColor = Theme.of(context).primaryColor;
+
+    var title = 'Bem vindo ao VoTop, Fulano de Tal';
 
     return Scaffold(
       appBar: AppBar(
@@ -41,7 +44,7 @@ class AdminPanel extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                'Bem vindo ao VoTop, Fulano de Tal',
+                title,
                 style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.w600,
@@ -54,67 +57,17 @@ class AdminPanel extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Card(
-                      color: _primaryColor,
-                      margin: EdgeInsets.all(50),
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.note_alt_rounded,
-                              color: Colors.white,
-                              size: 48,
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Gerenciar\nVotações',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                  CardButton(
+                    nextPage: () => Scaffold(),
+                    icon: Icons.note_alt_rounded,
+                    color: _primaryColor,
+                    title: 'Gerenciar\nVotações',
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Card(
-                      color: _primaryColor,
-                      margin: EdgeInsets.all(50),
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.add_task_rounded,
-                              color: Colors.white,
-                              size: 48,
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Criar\nVotação',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                  CardButton(
+                    nextPage: () => Scaffold(),
+                    icon: Icons.add_task_rounded,
+                    color: _primaryColor,
+                    title: 'Criar Votação',
                   ),
                 ],
               ),
@@ -122,67 +75,17 @@ class AdminPanel extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Card(
-                      color: _primaryColor,
-                      margin: EdgeInsets.all(50),
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.manage_accounts_rounded,
-                              color: Colors.white,
-                              size: 48,
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Editar Perfil',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                  CardButton(
+                    nextPage: () => EditProfile(),
+                    icon: Icons.manage_accounts_rounded,
+                    color: _primaryColor,
+                    title: 'Editar Perfil',
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Card(
-                      color: _primaryColor,
-                      margin: EdgeInsets.all(50),
-                      child: Container(
-                        height: 200,
-                        width: 200,
-                        alignment: Alignment.center,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.query_stats_rounded,
-                              color: Colors.white,
-                              size: 48,
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Relatórios',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                  CardButton(
+                    nextPage: () => Scaffold(),
+                    icon: Icons.query_stats_rounded,
+                    color: _primaryColor,
+                    title: 'Relatórios',
                   ),
                 ],
               ),
@@ -193,3 +96,4 @@ class AdminPanel extends StatelessWidget {
     );
   }
 }
+
