@@ -39,6 +39,7 @@ class UserModel extends Model {
       notifyListeners();
       throw e;
     }
+    await _loadCurrentUser();
     isLoading = false;
     notifyListeners();
   }
