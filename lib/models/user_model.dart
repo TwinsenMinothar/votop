@@ -27,14 +27,13 @@ class UserModel extends Model {
   doAuth(Map<String, dynamic> userData) async {
     isLoading = true;
     notifyListeners();
-    print(userData.toString());
+
     try {
       if (userData['signUp'])
         user = await auth.signUp(userData['email'], userData['password']);
       else {
         user = await auth.signIn(userData['email'], userData['password']);
       }
-      print('logged in');
     } on AuthException catch (e) {
       isLoading = false;
       notifyListeners();

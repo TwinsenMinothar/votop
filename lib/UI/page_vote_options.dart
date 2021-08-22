@@ -3,7 +3,17 @@ import 'package:flutter/material.dart';
 import './ui.dart';
 import 'components/components.dart';
 
-class VoteOption extends StatelessWidget {
+class VoteOption extends StatefulWidget {
+  @override
+  _VoteOptionState createState() => _VoteOptionState();
+}
+
+class _VoteOptionState extends State<VoteOption> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +40,20 @@ class VoteOption extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      options.add(Option());
+                      setState(() {
+                        options.add(Option());
+                      });
                     },
                     child: Text('Adicionar opção'),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: options.length > 2 ? () {
+                      setState(() {
+                        options.removeLast();
+                      });
+                    } : null,
+                    child: Text('Remover última opção'),
                   ),
                 ],
               ),

@@ -9,11 +9,11 @@ class AdminPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final _primaryColor = Theme.of(context).primaryColor;
 
-    var title = 'Bem vindo ao VoTop, Fulano de Tal';
+    var title = 'Bem vindo ao VoTop, ADM';
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('VoTop | Painel'),
+        title: Text('VoTop | Painel ADM'),
         centerTitle: true,
         actions: [
           Padding(

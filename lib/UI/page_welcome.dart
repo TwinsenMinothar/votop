@@ -1,5 +1,6 @@
 import 'package:Votop/UI/page_password_recovery.dart';
 import 'package:Votop/models/user_model.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:firedart/auth/exceptions.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -61,9 +62,13 @@ class _WelcomePageState extends State<WelcomePage> {
                   children: [
                     TextFormField(
                       controller: _emailController,
-                      validator: (String? value) {
-                        if (value != null && value.isEmpty)
-                          return 'Email required';
+                      validator: (String? email) {
+                        if (email != null) {
+                          if (email.isEmpty)
+                            return 'Email required';
+                          else if (!EmailValidator.validate(email))
+                            return 'Email invalid';
+                        }
                         return null;
                       },
                       decoration: InputDecoration(
@@ -130,12 +135,13 @@ class _WelcomePageState extends State<WelcomePage> {
                           if (_formKey.currentState!.validate()) {
                             try {
                               await model.doAuth({
-                                "email": _emailController.text,
-                                "password": _passwordController.text,
+                                'email': _emailController.text,
+                                'password': _passwordController.text,
                                 'signUp': false,
                               });
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => NewVote()));
+
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                  builder: (context) => VoterPanel()));
                             } on AuthException catch (e) {
                               print(e);
                             }
@@ -151,17 +157,7 @@ class _WelcomePageState extends State<WelcomePage> {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => SignUp()));
                         },
-                        child: Text('Sing Up'),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NewVote()));
-                        },
-                        child: Text('New poll without Login'),
+                        child: Text('Sign Up'),
                       ),
                     ),
                   ],

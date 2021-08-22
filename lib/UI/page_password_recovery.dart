@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -37,8 +38,12 @@ class PasswordRecoveryPage extends StatelessWidget {
                         controller: _emailController,
                         keyboardType: TextInputType.emailAddress,
                         validator: (String? email) {
-                          if (email != null && email.isEmpty)
-                            return 'Email is required';
+                          if (email != null) {
+                            if (email.isEmpty)
+                              return 'Email required';
+                            else if (!EmailValidator.validate(email))
+                              return 'Email invalid';
+                          }
                           return null;
                         },
                         decoration: InputDecoration(

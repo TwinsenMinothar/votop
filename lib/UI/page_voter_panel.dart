@@ -12,6 +12,13 @@ class VoterPanel extends StatelessWidget {
       appBar: AppBar(
         title: Text('VoTop | Painel'),
         centerTitle: true,
+        leading: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => EditProfile()));
+          },
+          child: Icon(Icons.person),
+        ),
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 50),
@@ -90,7 +97,8 @@ class VoterPanel extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => NewVote()));
                   },
                   child: Card(
                     color: _primaryColor,

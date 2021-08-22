@@ -1,4 +1,7 @@
+import 'package:Votop/UI/page_welcome.dart';
 import 'package:Votop/ui/page_new_vote.dart';
+import 'package:date_field/date_field.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:firedart/auth/exceptions.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -56,8 +59,12 @@ class _SignUpState extends State<SignUp> {
                   TextFormField(
                     controller: _emailController,
                     validator: (String? email) {
-                      if (email != null && email.isEmpty)
-                        return 'Email is required';
+                      if (email != null) {
+                        if (email.isEmpty)
+                          return 'Email required';
+                        else if (!EmailValidator.validate(email))
+                          return 'Email invalid';
+                      }
                       return null;
                     },
                     decoration: InputDecoration(
@@ -65,17 +72,22 @@ class _SignUpState extends State<SignUp> {
                       icon: Icon(Icons.email),
                     ),
                   ),
-                  TextFormField(
-                    controller: _birthDateController,
-                    validator: (String? birthDate) {
-                      if (birthDate != null && birthDate.isEmpty)
-                        return 'Birth Date is required';
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Birth Date',
-                      icon: Icon(Icons.date_range),
+                  DateTimeFormField(
+                    decoration: const InputDecoration(
+                      hintStyle: TextStyle(color: Colors.black45),
+                      errorStyle: TextStyle(color: Colors.redAccent),
+                      prefixIcon: Icon(Icons.calendar_today),
+                      //border: OutlineInputBorder(),
+                      //suffixIcon: Icon(Icons.event_note),
+                      labelText: 'Date of Birth',
                     ),
+                    mode: DateTimeFieldPickerMode.date,
+                    autovalidateMode: AutovalidateMode.always,
+                    validator: (e) =>
+                    e?.day == 0 ? 'Please not the first day' : null,
+                    onDateSelected: (DateTime value) {
+                      _birthDateController.text = '${value.day}/${value.month}/${value.year}';
+                    },
                   ),
                   TextFormField(
                     controller: _passwordController,
@@ -118,6 +130,7 @@ class _SignUpState extends State<SignUp> {
                                   'name': _nameController.text,
                                   'email': _emailController.text,
                                   'birthDate': _birthDateController.text,
+                                  'isAdmin': false,
                                 };
 
                                 await model.signUp(
@@ -126,7 +139,7 @@ class _SignUpState extends State<SignUp> {
                                 );
 
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => NewVote()));
+                                    builder: (context) => WelcomePage()));
                               } on AuthException catch (e) {
                                 print(e);
                               }
