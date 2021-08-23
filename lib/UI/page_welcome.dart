@@ -131,21 +131,20 @@ class _WelcomePageState extends State<WelcomePage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ElevatedButton(
-                        onPressed: () async {
+                        onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            try {
-                              await model.doAuth({
-                                'email': _emailController.text,
-                                'password': _passwordController.text,
-                                'signUp': false,
-                              });
 
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                  builder: (context) => VoterPanel()));
-                            } on AuthException catch (e) {
-                              print(e);
-                            }
                           }
+
+                          model.doAuth(
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                            onSuccessVoter: _onSuccessVoter,
+                            onSuccessAdmin: _onSuccessAdmin,
+                            onFail: _onFail,
+                          );
+
+                          print(model.userData);
                         },
                         child: Text('Login'),
                       ),
@@ -168,5 +167,26 @@ class _WelcomePageState extends State<WelcomePage> {
         ),
       );
     }));
+  }
+
+  void _onSuccessVoter() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => VoterPanel()));
+  }
+
+  void _onSuccessAdmin() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => AdminPanel()));
+  }
+
+  void _onFail() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Falha ao entrar. Tente novamente!'),
+        backgroundColor: Colors.redAccent,
+        duration: Duration(seconds: 2),
+      ),
+    );
   }
 }

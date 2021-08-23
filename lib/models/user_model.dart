@@ -24,24 +24,31 @@ class UserModel extends Model {
     _loadCurrentUser();
   }
 
-  doAuth(Map<String, dynamic> userData) async {
+  doAuth({required String email, required String password,
+    required VoidCallback onSuccessVoter, required VoidCallback onSuccessAdmin,
+    required VoidCallback onFail}) async {
     isLoading = true;
     notifyListeners();
 
     try {
-      if (userData['signUp'])
-        user = await auth.signUp(userData['email'], userData['password']);
-      else {
-        user = await auth.signIn(userData['email'], userData['password']);
-      }
+      user = await auth.signIn(email, password);
+
+      await _loadCurrentUser();
+
+      if(userData['isAdmin'])
+        onSuccessAdmin();
+      else
+        onSuccessVoter();
+
+      isLoading = false;
+      notifyListeners();
     } on AuthException catch (e) {
+      onFail();
+
       isLoading = false;
       notifyListeners();
       throw e;
     }
-    await _loadCurrentUser();
-    isLoading = false;
-    notifyListeners();
   }
 
   Future<void> signUp({required Map<String, dynamic> userData, required String pass}) async {
@@ -69,6 +76,15 @@ class UserModel extends Model {
     isLoading = false;
     notifyListeners();
   }
+  void signOut() {
+    auth.signOut();
+
+    userData = Map();
+    user = null;
+
+    notifyListeners();
+  }
+
 
   void recoveryPassword(String email) {
     auth.resetPassword(email);
@@ -91,7 +107,7 @@ class UserModel extends Model {
       }
     }
     if (user != null) {
-      if (userData["email"] == null) {
+      if (userData["name"] == null) {
         Document docUser = await Firestore.instance
             .collection("users")
             .document(user!.id)

@@ -1,4 +1,6 @@
+import 'package:Votop/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import './ui.dart';
 
 class VoterPanel extends StatelessWidget {
@@ -22,24 +24,30 @@ class VoterPanel extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 50),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => WelcomePage()
-                ));
+            child: ScopedModelDescendant<UserModel>(
+              builder: (context, child, model) {
+                return InkWell(
+                  onTap: () {
+                    model.signOut();
+
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => WelcomePage()
+                    ));
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Text('Sair'),
+                        SizedBox(width: 10),
+                        Icon(Icons.exit_to_app),
+                      ],
+                    ),
+                  ),
+                );
               },
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    Text('Sair'),
-                    SizedBox(width: 10),
-                    Icon(Icons.exit_to_app),
-                  ],
-                ),
-              ),
             ),
-          )
+          ),
         ],
       ),
       body: Container(
