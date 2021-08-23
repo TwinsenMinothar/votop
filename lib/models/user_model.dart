@@ -76,6 +76,26 @@ class UserModel extends Model {
     isLoading = false;
     notifyListeners();
   }
+
+  Future<void> editUser({required Map<String, dynamic> userData}) async {
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      await _saveUserData(userData);
+
+      isLoading = false;
+      notifyListeners();
+    } on AuthException catch (e) {
+      isLoading = false;
+      notifyListeners();
+      throw e;
+    }
+
+    isLoading = false;
+    notifyListeners();
+  }
+
   void signOut() {
     auth.signOut();
 

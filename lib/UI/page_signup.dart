@@ -21,7 +21,7 @@ class _SignUpState extends State<SignUp> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _birthDateController = TextEditingController();
+  late DateTime? _birthDateValue;
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -86,7 +86,7 @@ class _SignUpState extends State<SignUp> {
                     validator: (e) =>
                     e?.day == 0 ? 'Please not the first day' : null,
                     onDateSelected: (DateTime value) {
-                      _birthDateController.text = '${value.day}/${value.month}/${value.year}';
+                      _birthDateValue = value;
                     },
                   ),
                   TextFormField(
@@ -129,7 +129,7 @@ class _SignUpState extends State<SignUp> {
                                 Map<String, dynamic> userData = {
                                   'name': _nameController.text,
                                   'email': _emailController.text,
-                                  'birthDate': _birthDateController.text,
+                                  'birthDate': _birthDateValue,
                                   'isAdmin': false,
                                 };
 
