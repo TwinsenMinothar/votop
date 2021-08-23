@@ -82,7 +82,7 @@ class AdminPanel extends StatelessWidget {
                         title: 'Gerenciar\nVotações',
                       ),
                       CardButton(
-                        nextPage: () => Scaffold(),
+                        nextPage: () => NewVote(),
                         icon: Icons.add_task_rounded,
                         color: _primaryColor,
                         title: 'Criar Votação',
@@ -100,7 +100,7 @@ class AdminPanel extends StatelessWidget {
                         title: 'Editar Perfil',
                       ),
                       CardButton(
-                        nextPage: () => Scaffold(),
+                        nextPage: () => Scaffold(appBar: AppBar()),
                         icon: Icons.query_stats_rounded,
                         color: _primaryColor,
                         title: 'Relatórios',
