@@ -1,6 +1,7 @@
 import 'package:Votop/models/models.dart';
 import 'package:flutter/material.dart';
 import './ui.dart';
+import './components/components.dart';
 import '../models/poll_model.dart';
 
 class VotingList extends StatefulWidget {
@@ -54,6 +55,8 @@ class _VotingListState extends State<VotingList> {
             padding: EdgeInsets.symmetric(horizontal: 150),
             child: Divider(height: 25),
           ),
+          ButtonBack(),
+          SizedBox(height: 10),
           Expanded(
             child: SingleChildScrollView(
               child: Center(
