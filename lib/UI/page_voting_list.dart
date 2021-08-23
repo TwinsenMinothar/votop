@@ -2,9 +2,13 @@ import 'package:Votop/models/models.dart';
 import 'package:flutter/material.dart';
 import './ui.dart';
 import './components/components.dart';
-import '../models/poll_model.dart';
 
 class VotingList extends StatefulWidget {
+  VotingList({Key? key, required this.title, required this.onChoosing})
+      : super(key: key);
+  final String title;
+  final void Function(PollModel) onChoosing;
+
   @override
   _VotingListState createState() => _VotingListState();
 }
@@ -34,9 +38,6 @@ class _VotingListState extends State<VotingList> {
   @override
   Widget build(BuildContext context) {
     final _primaryColor = Theme.of(context).primaryColor;
-
-    var title = 'Escolha uma votação para participar';
-
     return Scaffold(
       appBar: AppBar(
         title: Text('VoTop | Votação'),
@@ -45,7 +46,7 @@ class _VotingListState extends State<VotingList> {
       body: Column(
         children: [
           Text(
-            title,
+            widget.title,
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
@@ -75,7 +76,8 @@ class _VotingListState extends State<VotingList> {
                                     key: ValueKey(index),
                                     title: Text(_polls[index].title),
                                     subtitle: Text(_polls[index].description),
-                                    onTap: () {},
+                                    onTap: () =>
+                                        widget.onChoosing(_polls[index]),
                                   ),
                                 );
                               },

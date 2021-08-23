@@ -57,6 +57,7 @@ class PollModel {
       return page.map((doc) {
         var pm = PollModel(doc['title'], doc['description']);
         pm.options = doc['options'].cast<Map<String, dynamic>>();
+        pm.ref = doc.reference;
         return pm;
       }).toList();
     } on Exception catch (e) {

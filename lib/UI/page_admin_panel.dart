@@ -6,7 +6,6 @@ import './components/components.dart';
 import '../UI/ui.dart';
 
 class AdminPanel extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final _primaryColor = Theme.of(context).primaryColor;
@@ -25,9 +24,9 @@ class AdminPanel extends StatelessWidget {
                   onTap: () {
                     model.signOut();
 
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => WelcomePage()
-                    ));
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => WelcomePage()),
+                    );
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -69,7 +68,15 @@ class AdminPanel extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CardButton(
-                        nextPage: () => Scaffold(),
+                        nextPage: () => VotingList(
+                          title: 'Escolha uma votação para gerenciar',
+                          onChoosing: (poll) {
+                            // TODO: Navegação ao clicar
+                            // Navigator.of(context).push(
+                            //   MaterialPageRoute(builder: (context) => Voting(poll)),
+                            // );
+                          },
+                        ),
                         icon: Icons.note_alt_rounded,
                         color: _primaryColor,
                         title: 'Gerenciar\nVotações',
@@ -109,4 +116,3 @@ class AdminPanel extends StatelessWidget {
     );
   }
 }
-
