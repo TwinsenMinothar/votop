@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './ui.dart';
 import 'components/components.dart';
 
 class IdentificationUser extends StatelessWidget {
@@ -38,7 +39,7 @@ class IdentificationUser extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ButtonBack(),
-                  ButtonContinue(nextPage: ()=> null),
+                  ButtonContinue(nextPage: ()=> VoteUser()),
                 ],
               ),
             ),

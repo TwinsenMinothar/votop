@@ -19,7 +19,7 @@ class VoterPanel extends StatelessWidget {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => EditProfile()));
           },
-          child: Icon(Icons.person),
+          child: Icon(Icons.manage_accounts),
         ),
         actions: [
           Padding(
@@ -72,7 +72,8 @@ class VoterPanel extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => VoteUser()));
                   },
                   child: Card(
                     color: _primaryColor,

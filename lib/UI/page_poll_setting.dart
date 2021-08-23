@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import './ui.dart';
 import 'components/components.dart';
-import '../models/models.dart';
 
-List<OptionSetting> settingOptions = [
+/*List<OptionSetting> settingOptions = [
   OptionSetting(
     iconData: Icons.check,
     title: 'Yes, no, if need be',
@@ -28,7 +27,7 @@ List<OptionSetting> settingOptions = [
     description:
         'Participants’ names, comments and votes are confidential. Only you can see the results.',
   ),
-];
+];*/
 
 class PollSetting extends StatefulWidget {
   const PollSetting({Key? key}) : super(key: key);
