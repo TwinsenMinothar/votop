@@ -1,9 +1,25 @@
+import 'package:Votop/models/models.dart';
 import 'package:flutter/material.dart';
 
 import './ui.dart';
 import 'components/components.dart';
 
 class VoteOption extends StatefulWidget {
+  final PollModel poll;
+
+  VoteOption(this.poll) {
+    options = [];
+    for (var option in this.poll.options) {
+      options.add(new Option(option['title']));
+    }
+  }
+
+  saveOptions() async {
+    List<String> titles = [];
+    for (var option in options) titles.add(option.title);
+    await this.poll.saveOptions(titles);
+  }
+
   @override
   _VoteOptionState createState() => _VoteOptionState();
 }
@@ -41,18 +57,20 @@ class _VoteOptionState extends State<VoteOption> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        options.add(Option());
+                        options.add(Option('Nova opção'));
                       });
                     },
                     child: Text('Adicionar opção'),
                   ),
                   SizedBox(width: 10),
                   ElevatedButton(
-                    onPressed: options.length > 2 ? () {
-                      setState(() {
-                        options.removeLast();
-                      });
-                    } : null,
+                    onPressed: options.length > 2
+                        ? () {
+                            setState(() {
+                              options.removeLast();
+                            });
+                          }
+                        : null,
                     child: Text('Remover última opção'),
                   ),
                 ],
@@ -64,7 +82,7 @@ class _VoteOptionState extends State<VoteOption> {
               shrinkWrap: true,
               padding: EdgeInsets.all(16.0),
               itemBuilder: (BuildContext context, int index) {
-                  return options[index];
+                return options[index];
               },
               itemCount: options.length,
             ),
@@ -72,7 +90,17 @@ class _VoteOptionState extends State<VoteOption> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ButtonBack(),
-                ButtonContinue(nextPage: () => PollSetting()),
+                ElevatedButton(
+                    onPressed: () async {
+                      await this.widget.saveOptions();
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => IdentificationUser()),
+                      );
+                    },
+                    child: Text('salva')),
+                //TODO : THIS BTN V
+                ButtonContinue(nextPage: () => IdentificationUser()),
               ],
             )
           ],

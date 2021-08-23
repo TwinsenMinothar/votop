@@ -1,3 +1,4 @@
+import 'package:Votop/models/models.dart';
 import 'package:flutter/material.dart';
 
 import './ui.dart';
@@ -5,6 +6,7 @@ import 'components/components.dart';
 
 class NewVote extends StatelessWidget {
   TextEditingController descriptionController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +28,7 @@ class NewVote extends StatelessWidget {
               ),
             ),
             TextFormField(
+              controller: titleController,
               decoration: InputDecoration(
                   labelText: 'Titulo', icon: Icon(Icons.subject)),
             ),
@@ -40,7 +43,18 @@ class NewVote extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ButtonBack(),
-                  ButtonContinue(nextPage: () => VoteOption()),
+                  ElevatedButton(
+                      onPressed: () async {
+                        PollModel poll = new PollModel(
+                            titleController.text, descriptionController.text);
+                        await poll.createPoll();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => VoteOption(poll)),
+                        );
+                      },
+                      child: Text('cria')),
+                      // TODO: this btn v
+                  ButtonContinue(nextPage: () => VoteOption(new PollModel('a','b'))),
                 ],
               ),
             ),

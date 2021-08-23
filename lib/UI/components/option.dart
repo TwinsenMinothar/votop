@@ -1,32 +1,21 @@
 import 'package:flutter/material.dart';
 
-List<Option> options = [
-  Option(),
-  Option(),
-];
+List<Option> options = [];
 
 class Option extends StatelessWidget {
-  late IconData? trashOption;
-
-  Option({this.trashOption});
+  String title;
+  Option(this.title);
+  TextEditingController titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onEditingComplete: () => this.title = titleController.text,
+      controller: titleController,
       decoration: InputDecoration(
-        labelText: 'Option',
+        labelText: this.title,
         icon: Icon(Icons.add),
         hintText: 'Add option',
-        suffixIcon: trashOption != null
-            ? IconButton(
-          icon: Icon(trashOption),
-          onPressed: options.length > 2
-              ? () {
-            options.removeLast();
-          }
-              : null,
-        )
-            : null,
       ),
     );
   }
