@@ -50,4 +50,18 @@ class PollModel {
       throw e;
     }
   }
+
+  static Future<List<PollModel>> getPolls() async {
+    try {
+      var page = await Firestore.instance.collection('poll').get();
+      return page.map((doc) {
+        var pm = PollModel(doc['title'], doc['description']);
+        pm.options = doc['options'].cast<Map<String, dynamic>>();
+        pm.ref = doc.reference;
+        return pm;
+      }).toList();
+    } on Exception catch (e) {
+      throw e;
+    }
+  }
 }

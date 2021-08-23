@@ -9,3 +9,6 @@ export './page_voter_panel.dart';
 export './page_edit_profile.dart';
 export './page_vote_user.dart';
 export './creation_new_vote.dart';
+export './page_voting_list.dart';
+export './page_voting.dart';
+

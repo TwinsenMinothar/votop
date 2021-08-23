@@ -2,6 +2,7 @@ import 'package:Votop/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import './ui.dart';
+import './components/components.dart';
 
 class VoterPanel extends StatelessWidget {
   const VoterPanel({Key? key}) : super(key: key);
@@ -16,8 +17,8 @@ class VoterPanel extends StatelessWidget {
         centerTitle: true,
         leading: InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => EditProfile()));
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => EditProfile()));
           },
           child: Icon(Icons.manage_accounts),
         ),
@@ -30,9 +31,8 @@ class VoterPanel extends StatelessWidget {
                   onTap: () {
                     model.signOut();
 
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => WelcomePage()
-                    ));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => WelcomePage()));
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -70,73 +70,26 @@ class VoterPanel extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => VoteUser()));
-                  },
-                  child: Card(
-                    color: _primaryColor,
-                    margin: EdgeInsets.all(50),
-                    child: Container(
-                      height: 200,
-                      width: 200,
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.note_alt_rounded,
-                            color: Colors.white,
-                            size: 48,
-                          ),
-                          SizedBox(height: 12),
-                          Text(
-                            'Depositar\nVoto',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                CardButton(
+                  title: 'Depositar\nVoto',
+                  color: _primaryColor,
+                  icon: Icons.note_alt_rounded,
+                  nextPage: () => VotingList(
+                    title: 'Escolha uma votação para participar',
+                    onChoosing: (poll) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Voting(poll: poll),
+                        ),
+                      );
+                    },
                   ),
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => NewVote()));
-                  },
-                  child: Card(
-                    color: _primaryColor,
-                    margin: EdgeInsets.all(50),
-                    child: Container(
-                      height: 200,
-                      width: 200,
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.add_task_rounded,
-                            color: Colors.white,
-                            size: 48,
-                          ),
-                          SizedBox(height: 12),
-                          Text(
-                            'Criar\nVotação',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                CardButton(
+                  title: 'Criar\nVotação',
+                  color: _primaryColor,
+                  icon: Icons.add_task_rounded,
+                  nextPage: () => NewVote(),
                 ),
               ],
             ),
