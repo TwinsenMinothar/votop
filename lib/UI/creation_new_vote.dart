@@ -9,13 +9,13 @@ List<OptionSetting> settingOptions = [
     iconData: Icons.check,
     title: 'Yes, no, if need be',
     description:
-    'Participants can indicate if an option is not ideal for them.',
+        'Participants can indicate if an option is not ideal for them.',
   ),
   OptionSetting(
     iconData: Icons.group,
     title: 'Limit the number of votes per option',
     description:
-    'First come, first served. Once the spots are filled, the option is no longer available.',
+        'First come, first served. Once the spots are filled, the option is no longer available.',
   ),
   OptionSetting(
     iconData: Icons.looks_one,
@@ -26,18 +26,16 @@ List<OptionSetting> settingOptions = [
     iconData: Icons.visibility_off,
     title: 'Hidden poll',
     description:
-    'Participants’ names, comments and votes are confidential. Only you can see the results.',
+        'Participants’ names, comments and votes are confidential. Only you can see the results.',
   ),
 ];
 
 class CreationNewVote extends StatefulWidget {
-
   @override
   _CreationNewVoteState createState() => _CreationNewVoteState();
 }
 
 class _CreationNewVoteState extends State<CreationNewVote> {
-
   TextEditingController descriptionController = TextEditingController();
 
   TextEditingController titleController = TextEditingController();
@@ -63,13 +61,14 @@ class _CreationNewVoteState extends State<CreationNewVote> {
           child: Column(
             children: [
               Column(
-                children: [Text(
-                  'Qual é a ocasião?',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
+                children: [
+                  Text(
+                    'Qual é a ocasião?',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
                   TextFormField(
                     controller: titleController,
                     decoration: InputDecoration(
@@ -78,8 +77,10 @@ class _CreationNewVoteState extends State<CreationNewVote> {
                   TextFormField(
                     controller: descriptionController,
                     decoration: InputDecoration(
-                        labelText: 'Descrição', icon: Icon(Icons.description)),
-                  ),],
+                        labelText: 'Descrição',
+                        icon: Icon(Icons.description)),
+                  ),
+                ],
               ),
               Column(
                 children: [
@@ -107,10 +108,10 @@ class _CreationNewVoteState extends State<CreationNewVote> {
                         ElevatedButton(
                           onPressed: options.length > 2
                               ? () {
-                            setState(() {
-                              options.removeLast();
-                            });
-                          }
+                                  setState(() {
+                                    options.removeLast();
+                                  });
+                                }
                               : null,
                           child: Text('Remover última opção'),
                         ),
@@ -119,48 +120,17 @@ class _CreationNewVoteState extends State<CreationNewVote> {
                   ),
                 ],
               ),
-
-
               Divider(),
-
-              Column(
-                children: [
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    padding: EdgeInsets.all(16.0),
-                    itemBuilder: (BuildContext context, int index) {
-                      return options[index];
-                    },
-                    itemCount: options.length,
-                  ),
-
-                  Divider(),
-
-                  ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CardOption(settingOptions[index]);
-                    },
-                    itemCount: settingOptions.length,
-                  ),
-
-                ],
-              ),
-
-
               Padding(
                 padding: const EdgeInsets.only(top: 16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ButtonBack(),
-                    ButtonContinue(nextPage: ()=> AdminPanel()),
+                    ButtonContinue(nextPage: () => AdminPanel()),
                   ],
                 ),
               ),
-
             ],
           ),
         ),
