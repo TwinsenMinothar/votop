@@ -16,7 +16,7 @@ class VoteOption extends StatefulWidget {
 
   saveOptions() async {
     List<String> titles = [];
-    for (var option in options) titles.add(option.title);
+    for (var option in options) titles.add(option.titleController.text);
     await this.poll.saveOptions(titles);
   }
 

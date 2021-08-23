@@ -10,7 +10,6 @@ class Option extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onEditingComplete: () => this.title = titleController.text,
       controller: titleController,
       decoration: InputDecoration(
         labelText: this.title,
