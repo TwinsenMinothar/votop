@@ -105,3 +105,45 @@ Professor:&nbsp;Msc prof. Johnatan Oliveira </br>
 
 ![Diagrama de contexto](assets\images\readme\img1.jpeg)
 ![Diagrama de hierarquia dos atores](assets\images\readme\img2.jpeg)
+
+## Medição e Qualidade de Software
+Para o cálculo de métricas de código utilizamos o pacote Dart Code
+Metrics[^2]. Ele fornece as seguintes métricas:
+
+-   Complexidade Ciclomática: Número de caminhos linearmente
+    independentes por meio de um bloco de código (Cada fluxo de controle
+    aumenta a complexidade em 1).
+
+-   Índice de manutenibilidade: Escala entre 0 e 100 calculado por
+
+    MAX(0,(171 - 5.2 * ln(Halstead Volume) - 0.23 * (Cyclomatic Complexity) - 16.2 * ln(Lines of Code))*100 / 171)
+
+-   Linhas de Código (Incluindo comentários e linhas em branco)
+
+-   Aninhamento Máximo: Nível máximo de aninhamento de blocos em um
+    método.
+
+-   Número de métodos: Número total de métodos em uma classe.
+
+-   Número de parâmetros: Número de parâmetros recebidos por um método
+
+-   Linhas de código-fonte (Não inclui comentários e linhas em branco)
+
+-   Peso de uma classe: Número de métodos públicos funcionais (exclui
+    getters e setters) dividido pelo número total de métodos públicos.
+
+Ele também permite verificar padrões de uso da linguagem e formatação,
+que ajudam na legibilidade e confiabilidade do código. Exemplos:
+
+-   avoid-non-null-assertion
+
+-   avoid-late-keyword
+
+-   no-empty-block
+
+Comando para executar:
+```
+dart run dart_code_metrics:metrics analyze lib
+```
+
+[^2]: https://dartcodemetrics.dev/docs/getting-started/introduction
