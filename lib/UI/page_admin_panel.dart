@@ -82,7 +82,7 @@ class AdminPanel extends StatelessWidget {
                         title: 'Gerenciar\nVotações',
                       ),
                       CardButton(
-                        nextPage: () => NewVote(),
+                        nextPage: () => CreationNewVote(),
                         icon: Icons.add_task_rounded,
                         color: _primaryColor,
                         title: 'Criar Votação',
