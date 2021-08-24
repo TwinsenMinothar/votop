@@ -89,7 +89,7 @@ class VoterPanel extends StatelessWidget {
                   title: 'Criar\nVotação',
                   color: _primaryColor,
                   icon: Icons.add_task_rounded,
-                  nextPage: () => NewVote(),
+                  nextPage: () => CreationNewVote(),
                 ),
               ],
             ),
