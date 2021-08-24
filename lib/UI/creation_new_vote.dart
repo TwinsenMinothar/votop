@@ -31,6 +31,22 @@ List<OptionSetting> settingOptions = [
 ];
 
 class CreationNewVote extends StatefulWidget {
+  late PollModel poll;
+
+  CreationNewVote() {
+    poll = new PollModel('Título da votação', 'Sua descrição da votação');
+    options = [];
+    for (var option in this.poll.options) {
+      options.add(new Option(option['title']));
+    }
+  }
+
+  saveOptions() async {
+    List<String> titles = [];
+    for (var option in options) titles.add(option.titleController.text);
+    await this.poll.saveOptions(titles);
+  }
+
   @override
   _CreationNewVoteState createState() => _CreationNewVoteState();
 }
@@ -44,8 +60,6 @@ class _CreationNewVoteState extends State<CreationNewVote> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    options.add(Option('Nova opção'));
-    options.add(Option('Nova opção'));
   }
 
   @override
@@ -77,10 +91,12 @@ class _CreationNewVoteState extends State<CreationNewVote> {
                   TextFormField(
                     controller: descriptionController,
                     decoration: InputDecoration(
-                        labelText: 'Descrição',
-                        icon: Icon(Icons.description)),
+                        labelText: 'Descrição', icon: Icon(Icons.description)),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 30,
               ),
               Column(
                 children: [
@@ -90,6 +106,15 @@ class _CreationNewVoteState extends State<CreationNewVote> {
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                     ),
+                  ),
+                  ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: EdgeInsets.all(16.0),
+                    itemBuilder: (BuildContext context, int index) {
+                      return options[index];
+                    },
+                    itemCount: options.length,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -127,7 +152,13 @@ class _CreationNewVoteState extends State<CreationNewVote> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ButtonBack(),
-                    ButtonContinue(nextPage: () => AdminPanel()),
+                    ButtonContinue(
+                        nextPage: () => AdminPanel(),
+                        save: () async {
+                          this.widget.poll.setAttrs(titleController.text,descriptionController.text);
+                          await this.widget.poll.createPoll();
+                          await this.widget.saveOptions();
+                        }),
                   ],
                 ),
               ),

@@ -53,7 +53,10 @@ class PollModel {
 
   static Future<List<PollModel>> getPolls() async {
     try {
-      var page = await Firestore.instance.collection('poll').get();
+      var page = await Firestore.instance
+          .collection('poll')
+          .orderBy('created_at', descending: true)
+          .get();
       return page.map((doc) {
         var pm = PollModel(doc['title'], doc['description']);
         pm.options = doc['options'].cast<Map<String, dynamic>>();
@@ -63,5 +66,10 @@ class PollModel {
     } on Exception catch (e) {
       throw e;
     }
+  }
+
+  setAttrs(String title, String desc) {
+    this.title = title;
+    this.description = desc;
   }
 }
