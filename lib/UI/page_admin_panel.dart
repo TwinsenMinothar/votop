@@ -1,3 +1,4 @@
+import 'package:Votop/UI/page_report.dart';
 import 'package:Votop/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -100,10 +101,19 @@ class AdminPanel extends StatelessWidget {
                         title: 'Editar Perfil',
                       ),
                       CardButton(
-                        nextPage: () => Scaffold(appBar: AppBar()),
-                        icon: Icons.query_stats_rounded,
-                        color: _primaryColor,
                         title: 'Relatórios',
+                        color: _primaryColor,
+                        icon: Icons.query_stats_rounded,
+                        nextPage: () => VotingList(
+                          title: 'Escolha uma votação',
+                          onChoosing: (poll) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => Report(poll: poll),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
