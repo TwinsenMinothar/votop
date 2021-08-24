@@ -72,4 +72,13 @@ class PollModel {
     this.title = title;
     this.description = desc;
   }
+
+  registerVote(optIndex) async {
+    var pollRef = Firestore.instance.collection('poll').document(this.ref!.id);
+    var doc = await pollRef.get();
+    var options = doc['options'];
+    options[optIndex]['votes'] = options[optIndex]['votes'] + 1;
+    options[optIndex]['updated_at'] = DateTime.now();
+    await pollRef.update({'options': options});
+  }
 }

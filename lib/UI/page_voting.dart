@@ -53,8 +53,7 @@ class Voting extends StatelessWidget {
                           title: Text(poll.options[index]['title']),
                           onTap: () {
                             try {
-                              // TODO: resgistro de voto
-                              // poll.registerVote(index);
+                              poll.registerVote(index);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text('Voto registrado'),
